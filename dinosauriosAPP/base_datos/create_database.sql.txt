@@ -1,0 +1,28 @@
+CREATE DATABASE trivia_game;
+
+USE trivia_game;
+
+CREATE TABLE questions (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    question_text VARCHAR(255) NOT NULL,
+    correct_answer VARCHAR(255) NOT NULL,
+    wrong_answer_1 VARCHAR(255) NOT NULL,
+    wrong_answer_2 VARCHAR(255) NOT NULL,
+    wrong_answer_3 VARCHAR(255) NOT NULL,
+    difficulty ENUM('low', 'medium', 'high') NOT NULL
+);
+
+CREATE TABLE games (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    player1 VARCHAR(255) NOT NULL,
+    player2 VARCHAR(255) NOT NULL,
+    score1 INT NOT NULL,
+    score2 INT NOT NULL,
+    game_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO questions (question_text, correct_answer, wrong_answer_1, wrong_answer_2, wrong_answer_3, difficulty)
+VALUES
+('¿Cuál es el dinosaurio más grande conocido?', 'Argentinosaurus', 'Tyrannosaurus Rex', 'Spinosaurus', 'Brachiosaurus', 'high'),
+('¿Qué dinosaurio tenía 15 cuernos en la cabeza?', 'Kosmoceratops', 'Triceratops', 'Pentaceratops', 'Styracosaurus', 'medium'),
+('¿Qué significa la palabra "dinosaurio"?', 'Lagarto terrible', 'Reptil grande', 'Bestia prehistórica', 'Criatura antigua', 'low');
